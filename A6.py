@@ -1,22 +1,13 @@
-words = 0
-line = 0
-chars = 0
+char = word = line_count = 0
 
-f = open("Example.txt", "w")
-f.write("Today is Monday \n Tomorrow is Tuesday \n Thankyou")
-f.close()
+with open('text.txt','w') as fp:
+    fp.write("Text Content \n New Contents")
+with open('text.txt','r')as fp:
+    for line in fp:     
+        line_count += 1
+        word += len(line.split())
+        char += len(line)
 
-with open("Example.txt", 'r') as fp:
-    line = len(fp.readlines())
-print('Total Number of Lines : ', line)
-
-with open("Example.txt", 'r') as fp:
-    for line in fp:
-        temp = line.split()
-        words += len(temp)
-print("Number of words:", words)
-
-with open("Example.txt", 'r') as fp:
-    data = fp.read()
-    chars = len(data)
-print("Number of characters:", chars)
+print(f"Num of char:{char}")
+print(f"Num of word:{word}")
+print(f"Num of lines:{line_count}")
