@@ -4,7 +4,7 @@ from mysql.connector import Error
 class Student:
 
     def connect(self):
-        self.conn = mysql.connector.connect(host='localhost',database='student', user='root',password='', port=’3307’)
+        self.conn = mysql.connector.connect(host='localhost', database='student', user='root', password='', port=3306)
         self.cur = self.conn.cursor()
 
     def InsertRec(self):
@@ -17,7 +17,7 @@ class Student:
             m2 = int(input("Enter marks in Second subject :  "))
             m3 = int(input("Enter marks in Third subject  :  "))
             try:
-                 sql = 'INSERT INTO Std_Marks values ("%d","%s", "%d", "%d", "%d" )' % (reg, stname, m1, m2, m3)
+                sql = 'INSERT INTO Std_Marks values ("%d","%s", "%d", "%d", "%d" )' % (reg, stname, m1, m2, m3)
                 self.cur.execute(sql)
                 self.conn.commit()
             except Error as err:
@@ -43,7 +43,7 @@ class Student:
         self.connect()
         try:
             z = int(input("Enter student registration number to delete"))
-            sql = "Delete from Std_Marks where Reg_No = %d " % z
+            sql = "delete from Std_Marks where Reg = %d " % z
             self.cur.execute(sql)
             records = self.cur.rowcount
             self.conn.commit()
