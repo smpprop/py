@@ -24,3 +24,4 @@ print(t1)
 
 print("Maximum and minimum values")
 print(max(t1))
+print(min(t1))
