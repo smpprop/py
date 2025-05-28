@@ -4,7 +4,7 @@ from mysql.connector import Error
 class ElectricityBill:
 
     def connect(self):
-        self.conn = mysql.connector.connect(host='localhost', database='student', user='root', password='', port=’3307’)
+       self.conn = mysql.connector.connect(host='localhost', database='Electricity', user='root', password='', port='3306')
        self.cur = self.conn.cursor()
 
     def InsertRec(self):
@@ -23,7 +23,7 @@ class ElectricityBill:
                 crn_read = int(input("Enter current reading "))
 
             try:
-                sql = 'INSERT INTO electricity values ("%s","%s", "%d", "%d", "%d" )' % (tariff, custname, meter, prv_read, crn_read)
+                sql = 'INSERT INTO Electricity values ("%s","%s", "%d", "%d", "%d" )' % (tariff, custname, meter, prv_read, crn_read)
                 self.cur.execute(sql)
                 self.conn.commit()
             except Error as err:
@@ -50,7 +50,7 @@ class ElectricityBill:
         try:
             print("Updating customer record ")
             z = int(input("Enter Meter Number "))
-            self.cur.execute("select * from Electricity where Meter_num = %d" % z)
+            self.cur.execute("select * from Electricity where meter = %d" % z)
             rows = self.cur.fetchall()
             tot_rec=self.cur.rowcount
             if tot_rec > 0 :
@@ -58,7 +58,7 @@ class ElectricityBill:
                     print(r)
                 a3=int(input("Enter previous reading "))
                 a4=int(input("Enter current reading "))
-                self.cur.execute("Update Electricity set prv_read = %d, cur_read = %d where meter_num = %d" % (a3, a4,z))
+                self.cur.execute("Update Electricity set prv_read = %d, crn_read = %d where meter = %d" % (a3, a4,z))
                 self.conn.commit()
             else:
                 print("No matching records found ")
@@ -75,7 +75,7 @@ class ElectricityBill:
             print("Bill Calculation  ")
             y = int(input("Enter Meter number "))
             z = input("Enter Tariff Code ")
-            sql="select * from Electricity where meter_num = %d and Tariff_code = '%s'" % (y, z)
+            sql="select * from Electricity where meter = %d and tariff = '%s'" % (y, z)
             self.cur.execute(sql)
             rows = self.cur.fetchall()
             tot_rec = self.cur.rowcount
