@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 class Employee:
     def connect(self):
-        self.conn = mysql.connector.connect(host='localhost', database='student', user='root', password='', port=’3307’)
+        self.conn = mysql.connector.connect(host='localhost', database='employee', user='root', password='', port='3306')
         self.cur = self.conn.cursor()
 
     def InsertRec(self):
@@ -25,7 +25,7 @@ class Employee:
     def viewAllRec(self):
         self.connect()
         try:
-            self.cur.execute("select * from Employee")
+            self.cur.execute("select * from employee")
             rows = self.cur.fetchall()
             print("\nThe available records are \n")
             for r in rows:
@@ -42,7 +42,7 @@ class Employee:
         try:
             print("\nSearch record by Employee Number ")
             z = int(input("Enter Employee Number "))
-            self.cur.execute("select * from Employee where EmpNum = %d" % z)
+            self.cur.execute("select * from employee where num = %d" % z)
             rows = self.cur.fetchall()
             tot_rec=self.cur.rowcount
             if tot_rec > 0 :
@@ -61,7 +61,7 @@ class Employee:
             print("\nSearch employee based on salary ")
             x = int(input("Enter Minimum salary  "))
             y = int(input("Enter Maximum salary  "))
-            sql = "select * from  employee where salary between %d and %d " % (x,y)
+            sql = "select * from  employee where sal between %d and %d " % (x,y)
             self.cur.execute(sql)
             rows = self.cur.fetchall()
             tot_rec = self.cur.rowcount
