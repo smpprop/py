@@ -1,30 +1,10 @@
-def find_unique(checklist):
-    unique_list = []
-    for item in checklist:
-        if item not in unique_list:
-            unique_list.append(item)
-
-    return unique_list
-
-
-def unique(ListA):
-    unique = []
-    for ele in listA:
-        c = ListA.count(ele)
-        if c == 1:
-            unique.append(ele)
-    return unique
-
-
-N = int(input("Enter a N number of elements in the list: "))
-
-listA = []
-print(f"Enter any {N} elements: ")
-for i in range(N):
-    elements = input("Enter an elements: ")
-    listA.append(elements)
-
-list_unique = find_unique(listA)
-print("The Unique elements are: ", list_unique)
-unique_list = unique(listA)
-print("The Unique",unique_list)
+list1 = []
+unique_list =[]
+n = int(input("Enter the number of list:"))
+for i in range(n):
+    item = int(input("Enter list in item:"))
+    list1.append(item)
+for x in list1:
+    if list1.count(x) ==1:
+        unique_list.append(x)
+print(unique_list)
