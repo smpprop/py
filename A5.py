@@ -8,3 +8,5 @@ def nearly_equal(a, b):
         if count > 1:             
             return False
     return count == 1             
+print(nearly_equal("Hello","illa"))
+print(nearly_equal("Hello","hello"))
