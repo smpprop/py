@@ -1,37 +1,29 @@
-def area_Rect(l, b):
-    ar = l * b
-    print(f"Area of a Rectangle is: {ar}")
+def rect(l, b):
+    area = l * b
+    print(f"Area of rectangle is {area}")
 
+l = int(input("Enter length: "))
+b = int(input("Enter breadth: "))
+rect(l, b)
 
-def area_Square(s):
-    ar = s * s
-    print(f"Area of a Square is: {ar}")
+def tri(b, h):
+    area = (b * h) / 2
+    print(f"Area of triangle is {area}")
 
+b = int(input("Enter breadth for triangle: "))
+h = int(input("Enter height: "))
+tri(b, h)
 
-def area_circle(r):
-    ar = 3.14 * (r * r)
-    print(f"Area of the Circle is {ar}")
+def circle(r):
+    area = 3.14 * r * r
+    print(f"Area of circle is {area}")
 
+r = int(input("Enter radius: "))
+circle(r)
 
-def area_Triangle(b, h):
-    ar = (b * h) / 2
-    print(f"Area of the Triangle {ar}")
+def square(s):
+    area = s * s
+    print(f"Area of square is {area}")
 
-
-print("Reading argument for Rectangle")
-l = float(input("Enter the length: "))
-b = float(input("Enter the breath: "))
-area_Rect(l, b)
-
-print("Reading argument for Square")
-s = float(input("Enter the sides in CMS: "))
-area_Square(s)
-
-print("Reading argument for Circle")
-r = float(input("Enter the radius: "))
-area_circle(r)
-
-print("Reading argument for Triangle")
-b = float(input("Enter the Base: "))
-h = float(input("Enter the Height: "))
-area_Triangle(b, h)
+s = float(input("Enter side length: "))
+square(s)
