@@ -1,37 +1,32 @@
-# Define custom exceptions
 class TooHighException(Exception):
-     pass
+    pass
 class TooLowException(Exception):
     pass
 class CorrectException(Exception):
-        pass
-
+    pass
 
 def guess_number():
-    stored_number = 42
+    stored_num = 42
 
     while True:
         try:
-            user_input = input("Enter your guess: ")
-            guess = int(user_input)
-
-            if guess > stored_number:
+            user_input = int(input("Enter your guess:"))
+        
+            if user_input > stored_num:
                 raise TooHighException
-            elif guess < stored_number:
+            elif user_input < stored_num:
                 raise TooLowException
             else:
                 raise CorrectException
-
-        except TooHighException:
-            print("Your guess is too high. Try again.")
+        
         except TooLowException:
-            print("Your guess is too low. Try again.")
+            print("Try high value")
+        except TooHighException:
+            print("Try low value")
         except CorrectException:
-            print("Congratulations! You guessed the correct number!")
+            print("Your guess is correct")
             break
         except ValueError:
-            print("Please enter a valid integer.")
+            print("Input Vaid value!")
 
-
-# Call the function guess_number()
 guess_number()
